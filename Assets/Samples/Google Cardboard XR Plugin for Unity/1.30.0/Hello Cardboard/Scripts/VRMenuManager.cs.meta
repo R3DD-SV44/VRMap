@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 6e103b39adaac3447a6585befa3ebb93
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - menuPanel: {instanceID: 0}
+  - closeMenuButton: {instanceID: 0}
+  - importMapsButton: {instanceID: 0}
+  - scrollContent: {instanceID: 0}
+  - thumbnailPrefab: {fileID: 4582800667946990165, guid: d91ad2d4bc4737c47b944b75ff520d21,
+      type: 3}
+  - sphereRenderer: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
