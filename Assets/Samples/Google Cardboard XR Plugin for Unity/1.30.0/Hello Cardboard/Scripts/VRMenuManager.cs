@@ -125,12 +125,15 @@ public class VRMenuManager : MonoBehaviour
                 continue;
             }
 
-            Texture2D texture = new Texture2D(2, 2);
+            Texture2D texture = new Texture2D(2, 2, TextureFormat.RGBA32, false); 
+
+            // AJOUTEZ AUSSI (Sécurité pour le mobile) :
+            texture.wrapMode = TextureWrapMode.Clamp;
+
             if (texture.LoadImage(imageBytes))
             {
-                // CRITICAL FIX 1: Apply texture to make it visible on GPU
                 texture.Apply(); 
-                
+                            
                 loadedTextures.Add(texture);
                 
                 // Add thumbnail immediately inside the loop
@@ -166,6 +169,9 @@ public class VRMenuManager : MonoBehaviour
         Button btn = thumbnailObj.GetComponent<Button>();
         if (btn != null)
         {
+            ColorBlock colors = btn.colors;
+            colors.normalColor = new Color(colors.normalColor.r, colors.normalColor.g, colors.normalColor.b, 1f);
+            btn.colors = colors;
             btn.onClick.AddListener(() =>
             {
                 sphereRenderer.material.mainTexture = texture;
