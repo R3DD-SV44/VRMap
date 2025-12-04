@@ -157,11 +157,6 @@ public class VRMenuManager : MonoBehaviour
         {
             img.texture = texture;
             img.color = Color.white; 
-
-            // --- CRITICAL FIX 2: FORCE MATERIAL VIA CODE ---
-            // This bypasses the need to change it in the Editor.
-            // It finds the "Sprites/Default" shader which renders properly in VR World Space.
-            img.material = new Material(Shader.Find("Sprites/Default"));
         }
         else
         {
