@@ -11,6 +11,11 @@ public class VRMenuManager : MonoBehaviour
     public Button closeMenuButton;
     public Button importMapsButton;
 
+    public ScrollRect imagesScrollRect;
+    public Button scrollUpButton;
+    public Button scrollDownButton;
+    public float scrollSpeed = 0.2f;
+
     [Header("360° Image Settings")]
     public string imagesFolderName = "VR360Images";
 
@@ -39,7 +44,35 @@ public class VRMenuManager : MonoBehaviour
             SetupUIButtonForCardboard(importMapsButton);
         }
 
+        if (scrollUpButton != null) {
+            scrollUpButton.onClick.AddListener(ScrollUp);
+            SetupUIButtonForCardboard(scrollUpButton);
+        }
+
+        if (scrollDownButton != null) {
+            scrollDownButton.onClick.AddListener(ScrollDown);
+            SetupUIButtonForCardboard(scrollDownButton);
+        }
+
         ShowMenu();
+    }
+
+    public void ScrollUp()
+    {
+        if (imagesScrollRect != null)
+        {
+            imagesScrollRect.verticalNormalizedPosition += scrollSpeed;
+            imagesScrollRect.verticalNormalizedPosition = Mathf.Clamp01(imagesScrollRect.verticalNormalizedPosition);
+        }
+    }
+
+    public void ScrollDown()
+    {
+        if (imagesScrollRect != null)
+        {
+            imagesScrollRect.verticalNormalizedPosition -= scrollSpeed;
+            imagesScrollRect.verticalNormalizedPosition = Mathf.Clamp01(imagesScrollRect.verticalNormalizedPosition);
+        }
     }
 
     void SetupUIButtonForCardboard(Button button)
